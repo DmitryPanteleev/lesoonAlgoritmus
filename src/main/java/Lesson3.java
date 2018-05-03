@@ -42,6 +42,7 @@ public class Lesson3 {
         }
         System.out.println("create arr");
 
+
         System.out.println();
         System.out.println("start sort " + dadArray.get(0).length + ": " + LocalTime.now());
         sort(dadArray.get(2));
@@ -197,7 +198,7 @@ public class Lesson3 {
     private static int binarySearch(int[] arr, int search) {
 
         int centr = arr.length / 2;
-        while () {
+        while (true) {
             if (search == arr[centr]) return centr;
             else if (search > arr[centr]) centr = (arr.length - centr) / 2;
             else centr = centr / 2;
