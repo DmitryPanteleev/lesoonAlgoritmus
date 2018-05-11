@@ -5,13 +5,17 @@ import java.util.Scanner;
 public class lesson4 {
     static String string;
 
+// Тестовые строки
 // 123)(123 123()123 123((123;
 
     public static void main(String[] args) {
+
+
 //        3. Написать программу, которая определяет, является ли введенная скобочная последовательность правильной.
 //           Примеры правильных скобочных выражений: (), ([])(), {}(), ([{}]),
 //           неправильных — )(, ())({), (, ])}), ([(]) для скобок [,(,{.
 //           Например: (2+(2*2)) или [2/{5*(4+7)}]
+
         Scanner in = new Scanner(System.in);
 //        string = in.next();
         string = in.nextLine();
@@ -61,25 +65,30 @@ public class lesson4 {
                     i++;
                     break;
             }
-            if (i < string.length()) {
-                if (out1 > in1) {
-                    out1--;
-                    System.out.println("Ошибка: " + string.substring(0, i - 1) + " !>" + charr + "<! " + string.substring(i));
-                } else if (out2 > in2) {
-                    out2--;
-                    System.out.println("Ошибка: " + string.substring(0, i - 1) + " !>" + charr + "<! " + string.substring(i));
-                } else if (out3 > in3) {
-                    out3--;
-                    System.out.println("Ошибка: " + string.substring(0, i - 1) + " !>" + charr + "<! " + string.substring(i));
-                } else
-                    if ((string.charAt(i) == ')' || string.charAt(i) == '[' || string.charAt(i) == '{')
+
+            if (out1 > in1) {
+                out1--;
+                System.out.println("Ошибка: " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
+            } else if (out2 > in2) {
+                out2--;
+                System.out.println("Ошибка: " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
+            } else if (out3 > in3) {
+                out3--;
+                System.out.println("Ошибка: " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
+            }
+            if (j > 0) {
+                if ((string.charAt(j - 1) == '(' || string.charAt(j - 1) == '[' || string.charAt(j - 1) == '{')
                         && (charr == ')' || charr == ']' || charr == '}')) {
-                    System.out.println("Ошибка: " + string.substring(0, i - 1) + " !>" + charr + "<! " + string.substring(i));
+                    System.out.println("Ошибка, пустые скобки () : " + string.substring(0, j - 2) + " !>" + string.charAt(j - 1) + charr + "<! " + string.substring(j + 1));
                 }
             }
+            j++;
         }
-        System.out.println(string.length());
-
+        if (out1+out2+out3!=in1+in2+in3){
+            System.out.println("Ошибка количества скобок");
+        }
     }
 
 }
+
+
