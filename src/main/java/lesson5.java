@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 //Дмитрий Пантелеев
 
-public class lesson4 {
+public class lesson5 {
     static String string;
 
 // Тестовые строки
