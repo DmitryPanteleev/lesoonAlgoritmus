@@ -2,7 +2,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Lesson3 {
+public class Lesson4 {
 
     static List<int[]> dadArray = new ArrayList<int[]>();
     private static long countSortSheikUl = 0;
