@@ -7,6 +7,7 @@ public class lesson5 {
 
 // Тестовые строки
 // 123)(123 123()123 123((123;
+// 123{}[}())(}{}{{}[}[}{}[][123
 
     public static void main(String[] args) {
 
@@ -20,7 +21,6 @@ public class lesson5 {
 //        string = in.next();
         string = in.nextLine();
         check(string);
-        System.out.println(string);
 
     }
 
@@ -68,24 +68,26 @@ public class lesson5 {
 
             if (out1 > in1) {
                 out1--;
-                System.out.println("Ошибка: " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
+                System.out.println("Ошибка:                   " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
             } else if (out2 > in2) {
                 out2--;
-                System.out.println("Ошибка: " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
+                System.out.println("Ошибка:                   " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
             } else if (out3 > in3) {
                 out3--;
-                System.out.println("Ошибка: " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
+                System.out.println("Ошибка:                   " + string.substring(0, j - 1) + " !>" + charr + "<! " + string.substring(j + 1));
             }
+//          Проверяем, что скобки не пустые.
             if (j > 0) {
                 if ((string.charAt(j - 1) == '(' || string.charAt(j - 1) == '[' || string.charAt(j - 1) == '{')
                         && (charr == ')' || charr == ']' || charr == '}')) {
-                    System.out.println("Ошибка, пустые скобки () : " + string.substring(0, j - 2) + " !>" + string.charAt(j - 1) + charr + "<! " + string.substring(j + 1));
+                    System.out.println("Ошибка: пустые скобки () : " + string.substring(0, j - 2) + " !>" + string.charAt(j - 1) + charr + "<! " + string.substring(j + 1));
                 }
             }
             j++;
         }
+//        Проверяем количество открытых и закрытых скобок
         if (out1+out2+out3!=in1+in2+in3){
-            System.out.println("Ошибка количества скобок");
+            System.out.println("Ошибка: не совпадает количество открытых и закрытых скобок.");
         }
     }
 
