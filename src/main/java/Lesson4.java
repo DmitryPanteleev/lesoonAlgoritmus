@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Lesson4 {
 
+
     static List<int[]> dadArray = new ArrayList<int[]>();
     private static long countSortSheikUl = 0;
     private static long countSortUl = 0;
