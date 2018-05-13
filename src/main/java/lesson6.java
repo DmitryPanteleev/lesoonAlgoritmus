@@ -4,6 +4,8 @@ import java.util.regex.Pattern;
 
 public class lesson6 {
     int hash;
+    static String[] tree = new String[50];
+    static int root = 1;
 
     /**
      * Panteleev Dmitriy
@@ -22,30 +24,63 @@ public class lesson6 {
      */
 
 
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        while (true) {
-            System.out.println("Введи строку из чисел и английского алфавита, нижнего регистра");
-            System.out.println("Хэш сумма: "+hashFunktion(scanner.nextLine()));
-        }
+//        while (true) {
+//        System.out.println("Введи строку из чисел и английского алфавита, нижнего регистра");
+//        System.out.println("Хэш сумма: " + hashFunktion(scanner.nextLine()));
+//        }
 //        System.out.println(hashFunktion("123qwe"));
+        for (int i = 1; i < tree.length; i++) {
+
+            tree[i] = String.valueOf((int) (1 + Math.random() * 9));
+        }
+
+//      Должен найти
+        doubleTree("5");
+
+//      Заведомо ложные данные
+        doubleTree("50");
+
+    }
+
+    private static void doubleTree(String search) {
+        boolean flag = false;
+        while (2 * root < tree.length) {
+            if (tree[root].equals(search)) {
+                System.out.println("Алгоритм нашёл число " + tree[root] + " в ячейке " + (root));
+                flag = true;
+                root++;
+            } else if (tree[2 * root].equals(search)) {
+                System.out.println("Алгоритм нашёл число " + tree[2 * root] + " в ячейке " + (2 * root));
+                flag = true;
+                root++;
+            } else if (tree[2 * root + 1].equals(search)) {
+                System.out.println("Алгоритм нашёл число " + tree[2 * root + 1] + " в ячейке " + (2 * root + 1));
+                flag = true;
+                root++;
+            } else root++;
+        }
+        if (flag == false) {
+            System.out.println("Ничего не найдено");
+        }
+        System.out.println();
 
     }
 
 
     private static int hashFunktion(String string) {
 
-        char[] stringHash = new char[string.length()+5];
-        int[] intHash = new int[stringHash.length+5];
+        char[] stringHash = new char[string.length() + 5];
+        int[] intHash = new int[stringHash.length + 5];
 
         int sum = string.length();
         int i = 0;
         Pattern p = Pattern.compile("[0-9]");
 
         while (i < string.length()) {
-            Matcher matcher = p.matcher(string.substring(i, i+1));
+            Matcher matcher = p.matcher(string.substring(i, i + 1));
             if (matcher.matches()) {
                 switch (string.charAt(i)) {
                     case '1':
@@ -181,7 +216,7 @@ public class lesson6 {
                 sum %= 100000;
             }
             if (sum < 365) {
-                sum+=3;
+                sum += 3;
                 sum *= 365;
 
                 i--;
