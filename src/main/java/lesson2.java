@@ -37,11 +37,11 @@ public class lesson2 {
         calcRec(3, 20, 1, 2);
 
 
-//        int i = 1;
+//        int move = 1;
 //        int[] array = new int[100];
-//        while (i < 21) {
-//            array[i] = i+2;
-//            i++;
+//        while (move < 21) {
+//            array[move] = move+2;
+//            move++;
 //        }
 
         System.out.println("Результат цикла: " + resultDegree);

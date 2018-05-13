@@ -5,67 +5,22 @@ import java.util.List;
 public class Lesson4 {
 
 
-    static List<int[]> dadArray = new ArrayList<int[]>();
+
     private static long countSortSheikUl = 0;
     private static long countSortUl = 0;
     private static long countSort = 0;
-    private static long countBSearch = 0;
     private static double timeSortUl;
     private static double timeSort;
     private static double timeSortSheikUl;
-    private static double timeBinnarySearch;
-    private static int search;
-    private static int search2;
 
     public static void main(String[] args) {
 //        int size = 10000;
+        System.out.println("****************");
+        System.out.println("Panteleev Dmitry");
+        System.out.println("****************");
 
-        createArr();
-        System.out.println("create arr");
-
-
-        System.out.println();
-        System.out.println("start sort " + dadArray.get(0).length + ": " + LocalTime.now());
-        sort(dadArray.get(2));
-        sortUl(dadArray.get(1));
-        sortSheikUl(dadArray.get(0));
-        System.out.println("start search " + dadArray.get(0).length + ": " + LocalTime.now());
-        binarySearch(dadArray.get(0), (int) (1 + Math.random() * 99));
-        System.out.println("Сортировка пузырьком:            " + countSort + " циклов перезаписи и " + timeSort + " секунд выполнение");
-        System.out.println("Сортировка пузырьком улучшенная: " + countSortUl + " циклов перезаписи и " + timeSortUl + " секунд выполнение");
-        System.out.println("Сортировка шейкером:             " + countSortSheikUl + " циклов перезаписи и " + timeSortSheikUl + " секунд выполнение");
-        System.out.println("Бинарный поиск:                  " + countBSearch + " циклов поиска и " + timeBinnarySearch + " секунд выполнение");
-        System.out.println("Бинарный поиск:                  " + search + " искали " + search2 + " нашли");
-        countBSearch = 0;
-
-        System.out.println("start sort " + dadArray.get(3).length + ": " + LocalTime.now());
-        sort(dadArray.get(5));
-        sortUl(dadArray.get(4));
-        sortSheikUl(dadArray.get(3));
-        binarySearch(dadArray.get(3), (int) (1 + Math.random() * 99));
-        System.out.println("Сортировка пузырьком:            " + countSort + " циклов перезаписи и " + timeSort + " секунд выполнение");
-        System.out.println("Сортировка пузырьком улучшенная: " + countSortUl + " циклов перезаписи и " + timeSortUl + " секунд выполнение");
-        System.out.println("Сортировка шейкером:             " + countSortSheikUl + " циклов перезаписи и " + timeSortSheikUl + " секунд выполнение");
-        System.out.println("Бинарный поиск:                  " + countBSearch + " циклов поиска и " + timeBinnarySearch + " секунд выполнение");
-        System.out.println("Бинарный поиск:                  " + search + " искали " + search2 + " нашли");
-        countBSearch = 0;
-
-        System.out.println("start sort " + dadArray.get(6).length + ": " + LocalTime.now());
-        sort(dadArray.get(8));
-        sortUl(dadArray.get(7));
-        sortSheikUl(dadArray.get(6));
-        binarySearch(dadArray.get(6), (int) (1 + Math.random() * 99));
-        System.out.println("Сортировка пузырьком:            " + countSort + " циклов перезаписи и " + timeSort + " секунд выполнение");
-        System.out.println("Сортировка пузырьком улучшенная: " + countSortUl + " циклов перезаписи и " + timeSortUl + " секунд выполнение");
-        System.out.println("Сортировка шейкером:             " + countSortSheikUl + " циклов перезаписи и " + timeSortSheikUl + " секунд выполнение");
-        System.out.println("Бинарный поиск:                  " + search + " искали " + search2 + " нашли");
-        countBSearch = 0;
-
-    }
-
-    public static void createArr() {
         double j = 1;
-
+        List<int[]> dadArray = new ArrayList<int[]>();
         while (j < 4) {
 
             int[] arr = new int[(int) (Math.pow(100, j))];
@@ -73,7 +28,7 @@ public class Lesson4 {
             int i = 0;
             while (i < arr.length) {
                 arr[i] = (int) (1 + Math.random() * 99);
-//            System.out.print(arr[i] + " ");
+//            System.out.print(arr[move] + " ");
                 i++;
             }
 
@@ -85,6 +40,33 @@ public class Lesson4 {
             dadArray.add(arr3);
             j++;
         }
+        System.out.println("create arr");
+
+
+        System.out.println();
+        System.out.println("start sort " + dadArray.get(0).length + ": " + LocalTime.now());
+        sort(dadArray.get(2));
+        sortUl(dadArray.get(1));
+        sortSheikUl(dadArray.get(0));
+        System.out.println("Сортировка пузырьком:            " + countSort + " циклов перезаписи и " + timeSort + " секунд выполнение");
+        System.out.println("Сортировка пузырьком улучшенная: " + countSortUl + " циклов перезаписи и " + timeSortUl + " секунд выполнение");
+        System.out.println("Сортировка шейкером:             " + countSortSheikUl + " циклов перезаписи и " + timeSortSheikUl + " секунд выполнение");
+        System.out.println("start sort " + dadArray.get(3).length + ": " + LocalTime.now());
+        sort(dadArray.get(5));
+        sortUl(dadArray.get(4));
+        sortSheikUl(dadArray.get(3));
+        System.out.println("Сортировка пузырьком:            " + countSort + " циклов перезаписи и " + timeSort + " секунд выполнение");
+        System.out.println("Сортировка пузырьком улучшенная: " + countSortUl + " циклов перезаписи и " + timeSortUl + " секунд выполнение");
+        System.out.println("Сортировка шейкером:             " + countSortSheikUl + " циклов перезаписи и " + timeSortSheikUl + " секунд выполнение");
+        System.out.println("start sort " + dadArray.get(6).length + ": " + LocalTime.now());
+        sort(dadArray.get(8));
+        sortUl(dadArray.get(7));
+        sortSheikUl(dadArray.get(6));
+        System.out.println("Сортировка пузырьком:            " + countSort + " циклов перезаписи и " + timeSort + " секунд выполнение");
+        System.out.println("Сортировка пузырьком улучшенная: " + countSortUl + " циклов перезаписи и " + timeSortUl + " секунд выполнение");
+        System.out.println("Сортировка шейкером:             " + countSortSheikUl + " циклов перезаписи и " + timeSortSheikUl + " секунд выполнение");
+
+
     }
 
     private static void sort(int[] array) {
@@ -213,27 +195,13 @@ public class Lesson4 {
         timeSortSheikUl = (endSortSheikUl - startSortSheikUl) / 1000;
     }
 
-    private static void binarySearch(int[] arr, int search) {
-        search2 = search;
-        double startBinnarySearch = System.currentTimeMillis();
-        int L = 0;
-        int R = arr.length - 1;
-        int centr = (L + (R - L)) / 2;
-        while (L <= R && arr[centr] != search) {
-            if (arr[centr] < search) {
-                L = centr + 1;
-            } else {
-                R = centr - 1;
-            }
-            centr = L + (R - L) / 2;
-            countBSearch++;
-        }
-        double endBinnarySearch = System.currentTimeMillis();
-        timeBinnarySearch = (endBinnarySearch - startBinnarySearch) / 1000;
-        if (arr[centr] == search) {
-            search = arr[centr];
-        } else {
-            search = -1;
-        }
-    }
+//    private static int binarySearch(int[] arr, int search) {
+//
+//        int centr = arr.length / 2;
+//        while (true) {
+//            if (search == arr[centr]) return centr;
+//            else if (search > arr[centr]) centr = (arr.length - centr) / 2;
+//            else centr = centr / 2;
+//        }
+//    }
 }
