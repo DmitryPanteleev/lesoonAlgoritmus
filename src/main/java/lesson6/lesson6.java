@@ -1,11 +1,19 @@
+package lesson6;
+
+import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class lesson6 {
-    int hash;
-    static String[] tree = new String[50];
+    static int[] tree = new int[10];
+    static int[] temp = new int[tree.length];
     static int root = 1;
+    static Object[] students = new Object[10];
+
+    //    static int i = 1;
+    int hash;
 
     /**
      * Panteleev Dmitriy
@@ -27,49 +35,126 @@ public class lesson6 {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
+//Массив для деревьев***************************
+/*        for (int i = 1; i < tree.length; i++) {
+
+            temp[i] = i;
+        }
+        for (int i = 0; i < temp.length; i++) {
+            System.out.print(temp[i] + " ");
+        }
+        System.out.println();
+        System.out.println();
+*/
+//**********************************************
+
+// *******Создание массива студентов************
+
+        ArrayStudents arrayStudents = new ArrayStudents();
+        Student student1 = new Student("q","a",1,1,2001,1);
+        Student student2 = new Student("w","s",2,2,2002,2);
+        Student student3 = new Student("e","d",3,3,2003,3);
+        Student student4 = new Student("r","f",4,4,2004,4);
+        Student student5 = new Student("t","g",5,5,2005,5);
+        Student student6 = new Student("y","h",6,6,2006,6);
+        arrayStudents.addStudentToArray(student1);
+        arrayStudents.addStudentToArray(student2);
+        arrayStudents.addStudentToArray(student3);
+        arrayStudents.addStudentToArray(student4);
+        arrayStudents.addStudentToArray(student5);
+        arrayStudents.addStudentToArray(student6);
+        arrayStudents.deleteStudent("w","s");
+        for (Student student:
+             arrayStudents.getArray()) {
+            System.out.println(student);
+        }
+
+
+//**********************************************
+
 //        while (true) {
 //        System.out.println("Введи строку из чисел и английского алфавита, нижнего регистра");
 //        System.out.println("Хэш сумма: " + hashFunktion(scanner.nextLine()));
 //        }
 //        System.out.println(hashFunktion("123qwe"));
-        for (int i = 1; i < tree.length; i++) {
+//        System.out.print("Введите метод поиска числа:" +
+//                '\n' + "1: двоичный поиск по дереву (центр, левый, правый.)," +
+//                '\n' + "2: двоичный поиск по дереву (левый, центр, правый.)," +
+//                '\n' + "3: двоичный поиск по дереву (правый, центр, левый)" + '\n');
+////        System.out.println("Введите искомое число от 1 до 10 " + );
+//        int temp = scanner.nextInt();
+//        if (temp == 1) {
+//        doubleTreeSearch("5", 1);
+//        } else if (temp == 2) {
+//            doubleTreeSearchLeft();
+//        }
 
-            tree[i] = String.valueOf((int) (1 + Math.random() * 9));
-        }
 
 //      Должен найти
-        doubleTree("5");
+//        doubleTree("5");
+//        doubleTreeSearch("5", root);
 
 //      Заведомо ложные данные
-        doubleTree("50");
+//        doubleTree("50");
 
     }
+//******Таблица студентов********************************
 
-    private static void doubleTree(String search) {
+
+
+
+//******Развлечения с деревьями (через массив)**************************
+
+//    Распечатываем массив
+    private static void printArray() {
+        for (int j = 0; j < temp.length; j++) {
+
+            System.out.print(tree[j] + " ");
+        }
+        System.out.println();
+    }
+
+//    Обходим дерево рекурсивно
+    private static int doubleTreeSearch(int search, int root) {
+        if (tree[root] == search) {
+            System.out.println("Число " + tree[root] + " найдено в ячейке: " + root);
+            return tree[root];
+        } else if ((2 * root + 1) < tree.length) {
+                if (doubleTreeSearch(search, 2 * root) != 0) {
+                    doubleTreeSearch(search, 2 * root + 1);
+                }
+            }
+        return 0;
+    }
+
+// Обходим все поля дерева при помощи цикла, не самый лучший способ, но работает.
+    private static void doubleTree(int search) {
+
         boolean flag = false;
         while (2 * root < tree.length) {
-            if (tree[root].equals(search)) {
+            if (tree[root] == search) {
                 System.out.println("Алгоритм нашёл число " + tree[root] + " в ячейке " + (root));
                 flag = true;
                 root++;
-            } else if (tree[2 * root].equals(search)) {
+            } else if (tree[2 * root] == search) {
                 System.out.println("Алгоритм нашёл число " + tree[2 * root] + " в ячейке " + (2 * root));
                 flag = true;
                 root++;
-            } else if (tree[2 * root + 1].equals(search)) {
+            } else if (tree[2 * root + 1] == search) {
                 System.out.println("Алгоритм нашёл число " + tree[2 * root + 1] + " в ячейке " + (2 * root + 1));
                 flag = true;
                 root++;
             } else root++;
         }
         if (flag == false) {
-            System.out.println("Ничего не найдено");
+            System.out.println("Число " + search + " не найдено");
         }
         System.out.println();
+        root = 1;
 
     }
 
-
+//******хэш функция***************************************
     private static int hashFunktion(String string) {
 
         char[] stringHash = new char[string.length() + 5];
