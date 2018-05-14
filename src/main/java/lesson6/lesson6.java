@@ -63,7 +63,7 @@ public class lesson6 {
         arrayStudents.addStudentToArray(student4);
         arrayStudents.addStudentToArray(student5);
         arrayStudents.addStudentToArray(student6);
-        arrayStudents.deleteStudent("w","s");
+//        arrayStudents.deleteStudent("w","s");
         for (Student student:
              arrayStudents.getArray()) {
             System.out.println(student);

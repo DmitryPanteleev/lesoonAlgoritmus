@@ -3,7 +3,7 @@ package lesson6;
 public class ArrayStudents {
 
     private int memory = 0;
-    private Student[] students = new Student[10 + memory];
+    private Student[] students = new Student[2 + memory];
     private Student[] temp;
 
     public void addStudentToArray(Student student) {
@@ -19,10 +19,11 @@ public class ArrayStudents {
             if (i == students.length) {
                 memory++;//специально увеличиваю память всего на одну ячейку.
                 temp = students;
-                students = new Student[50 + memory];
+                students = new Student[2 + memory];
                 for (int j = 0; j < temp.length; j++) {
                     students[j] = temp[j];
                 }
+                i--;
             }
 
         }
@@ -30,7 +31,7 @@ public class ArrayStudents {
 
     public void deleteStudent(String firstName, String lastName) {
         for (int i = 0; i < students.length; i++) {
-т            if(students[i].getLastName().equals(lastName) && students[i].getFirstName().equals(firstName)){
+            if(students[i].getLastName().equals(lastName) && students[i].getFirstName().equals(firstName)){
 //                students[i];
             }
 
