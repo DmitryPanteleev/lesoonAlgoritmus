@@ -17,7 +17,7 @@ public class ArrayStudents {
             }
             i++;
             if (i == students.length) {
-                memory++;//специально увеличиваю память всего на одну ячейку.
+                memory++;//специально увеличиваю память всего на одну ячейку. Хочу последить пересоздание.
                 temp = students;
                 students = new Student[2 + memory];
                 for (int j = 0; j < temp.length; j++) {
@@ -30,15 +30,26 @@ public class ArrayStudents {
     }
 
     public void deleteStudent(String firstName, String lastName) {
-        for (int i = 0; i < students.length; i++) {
-            if(students[i].getLastName().equals(lastName) && students[i].getFirstName().equals(firstName)){
-//                students[i];
+        for (int i = 0; i < students.length - 1; i++) {
+            if (students[i].getLastName().equals(lastName) && students[i].getFirstName().equals(firstName)) {
+                students[i] = null;
+                break;
             }
 
         }
     }
-    public Student[] getArray(){
+
+    public Student[] getArray() {
         return students;
     }
 
+    public void printStudentsArray() {
+        for (Student student :
+                students) {
+            if (student != null) {
+                System.out.println(student.getFirstName());
+            }
+        }
+        System.out.println();
+    }
 }
