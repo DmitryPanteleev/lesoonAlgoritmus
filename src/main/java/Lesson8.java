@@ -26,7 +26,7 @@ public class Lesson8 {
         createTestArray();
 
 
-        runHaora(arr21);
+        runHaora(arr11);
 
 //        runShella(arr31);
 
@@ -66,7 +66,7 @@ public class Lesson8 {
     private static void runHaora(int[] array) {
         checkArray(array);
         Long startTime = LocalTime.now().toNanoOfDay();
-        sortHoara(array, 0, array.length);
+        hoara2(array, 0, array.length - 1);
         Long endTime = LocalTime.now().toNanoOfDay();
         double runTimeSortHoara = (endTime - startTime) / 1000000000;
         System.out.print('\n' + "Время работы алгоритма Хоара обрабатывающего " + array.length + " элементов: " + runTimeSortHoara + " секунд" + '\n');
@@ -135,6 +135,58 @@ public class Lesson8 {
 
     }
 
+    private static void hoara2(int[] array, int start, int end) {
+        int middle = (end - start) / 2;
+        int tempValue;
+        boolean flag = false;
+        for (int i = 0; i < middle; i++) {
+            if (array[i] > array[middle]) {
+                if (flag == false) {
+                    for (int j = end; j > middle; j--) {
+                        if (array[j] < array[middle]) {
+                            countHaoraSravnenie++;
+                            tempValue = array[i];
+                            array[i] = array[j];
+                            array[j] = tempValue;
+                            countHaoraZapis++;
+                            break;
+                        }
+                        if (j == middle + 1) {
+                            flag = true;
+                        }
+                    }
+                } else {
+                    tempValue = array[i];
+                    for (int j = i; j < middle; j++) {
+                        array[j] = array[j + 1];
+                        countHaoraZapis++;
+                    }
+                    array[middle] = tempValue;
+//                    middle--;
+                }
+            }
+        }
+        for (int i = end; i > middle; i--) {
+            countHaoraSravnenie++;
+            if (i>0&& middle>0){
+            if (array[i] < array[middle]) {
+                tempValue = array[i];
+                for (int j = i; j > middle; j--) {
+                    array[i] = array[i - 1];
+                    countHaoraZapis++;
+                }
+                array[middle] = tempValue;
+//                middle++;
+            }
+        }}
+        middle = (end - start) / 2;
+
+        if (end - start > 1 && middle > 1) {
+            hoara2(array, start, --middle);
+            hoara2(array, ++middle, end);
+        }
+    }
+
     private static void sortHoara(int[] array, int start, int end) {
 
 //        int min = array[0];
@@ -148,7 +200,6 @@ public class Lesson8 {
 ////      выбираем опорный элемент, опорным делаем среднее арифметическое число
 //        int middle = (max + min) / 2;
 
-        int middle = (end - start) / 2;
 
 //        for (int i = start; i < end; i++) {
 //            countHaoraSravnenie++;
@@ -159,6 +210,7 @@ public class Lesson8 {
 //        }
 //        if (middle == (min + max) / 2) middle = (start + end) / 2;
 
+        int middle = (end - start) / 2;
 
         for (int i = 0; i <= middle; i++) {
             int tempValue;
@@ -195,8 +247,8 @@ public class Lesson8 {
                 array[tempRight] = tempValue;
                 countHaoraZapis += 3;
 //                если тру только левый флаг, запоминаем найденное значение и сдвигаем весь массив влево,
-            } else if (flagLeft == true && flagRight == false) {
-                tempValue = array[tempLeft];
+//            } else if (flagLeft == true && flagRight == false) {
+//                tempValue = array[tempLeft];
 //                сдвигаем массив влево;
 //                for (int j = tempLeft; j < middle; j++) {
 //                    array[j] = array[j + 1];
@@ -207,15 +259,15 @@ public class Lesson8 {
 //                middle -- ;
 //                countHaoraZapis++;
 
-                array[tempLeft] = array[middle];
-                array[middle] = tempValue;
-                middle = tempLeft;
-                countHaoraZapis+=3;
+//                array[tempLeft] = array[middle];
+//                array[middle] = tempValue;
+//                middle = tempLeft;
+//                countHaoraZapis += 3;
 
 
 //                Если вдруг тру только правый флаг, запоминаем его значение и сдвигаем массив вправо
-            } else if (flagLeft == false && flagRight == true) {
-                tempValue = array[tempRight];
+//            } else if (flagLeft == false && flagRight == true) {
+//                tempValue = array[tempRight];
 //                сдвигаем массив вправо
 //                for (int j = tempRight; j > middle; j--) {
 //                    array[j] = array[j - 1];
@@ -225,10 +277,10 @@ public class Lesson8 {
 //                middle ++ ;
 //                countHaoraZapis++;
 
-                array[tempRight] = array[middle];
-                array[middle] = tempValue;
-                middle = tempRight;
-                countHaoraZapis+=3;
+//                array[tempRight] = array[middle];
+//                array[middle] = tempValue;
+//                middle = tempRight;
+//                countHaoraZapis += 3;
 
 
             } else break;
@@ -250,12 +302,10 @@ public class Lesson8 {
 //            }
 //        }
 
-        if (middle > start || middle < end)
-
-        {
+        if (middle > start && middle < end) {
             countHaoraSravnenie++;
-            sortHoara(array, start, middle--);
-            sortHoara(array, middle++, end);
+            sortHoara(array, start, --middle);
+            sortHoara(array, ++middle, end);
         }
 
 
