@@ -2,7 +2,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
-public class lesson4 {
+class lesson4 {
 
 
 
